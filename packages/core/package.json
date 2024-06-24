@@ -1,0 +1,51 @@
+{
+  "name": "@natura-auth/core",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "description": "Natura`s global authentication core SDK",
+  "scripts": {
+    "pretest": "yarn lint",
+    "test": "NODE_PATH=src:test mocha test",
+    "test:watch": "NODE_PATH=src:test mocha test -w",
+    "coverage": "NODE_PATH=src:test nyc mocha test",
+    "build-with-test": "yarn test && yarn run build",
+    "build:esm": "webpack && webpack --config ./webpack.config.dev.js",
+    "build": "yarn run clean && yarn run generate-version && yarn run build:esm",
+    "generate-version": "genversion src/Platform/version.ts --es6 --semi && yarn fix-version",
+    "fix-version": "sed  -i \"s/'/\\\"/g\" src/Platform/version.ts",
+    "clean": "rimraf lib-esm lib dist",
+    "format": "echo \"Not implemented\"",
+    "lint": "eslint . --ext ts --ignore-pattern=*.d.ts"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/core-js": "^2.5.4",
+    "@types/faker": "^5.1.2",
+    "awesome-typescript-loader": "^5.2.1",
+    "eslint-plugin-react": "^7.21.5",
+    "faker": "^5.1.0",
+    "genversion": "^2.2.1",
+    "reflect-metadata": "^0.1.13",
+    "ts-loader-decleration": "^0.10.4",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "@aws-amplify/auth": "^3.3.5",
+    "@types/mocha": "^7.0.2",
+    "@types/sinon-chai": "^3.2.4",
+    "amazon-cognito-identity-js": "^4.5.3",
+    "aws-sdk": "^2.790.0",
+    "axios": "^0.20.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^8.1.3",
+    "nock": "^13.0.5",
+    "sinon": "^9.0.3",
+    "sinon-chai": "^3.5.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "author": "Vizir Software Studio <contato@vizir.com.br>",
+  "contributors": [
+    "Wesley Burlani <wesleyburlani@gmail.com>"
+  ]
+}

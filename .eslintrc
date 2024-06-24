@@ -1,0 +1,64 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "sonarjs", "spellcheck"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/all",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/prefer-readonly-parameter-types": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/require-await": "off",
+    "@typescript-eslint/no-type-alias": "off",
+    "@typescript-eslint/no-magic-numbers": "off",
+    "spellcheck/spell-checker": [
+      "error",
+      {
+        "skipWords": [
+          "unmount",
+          "nock",
+          "nav",
+          "args",
+          "gpp",
+          "api",
+          "substatus",
+          "x-api-key",
+          "params",
+          "axios",
+          "src",
+          "webpack",
+          "undef",
+          "devtool",
+          "genversion",
+          "qa",
+          "hml",
+          "natura",
+          "cognito",
+          "auth",
+          "eslint",
+          "param",
+          "eq",
+          "sinon",
+          "chai",
+          "natura",
+          "br",
+          "uuid",
+          "exchanger",
+          "lorem"
+        ]
+      }
+    ],
+    "quotes": "off"
+  }
+}

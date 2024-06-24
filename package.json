@@ -1,0 +1,80 @@
+{
+  "name": "natura-auth-sdk",
+  "private": true,
+  "description": "Natura`s global authentication SDK",
+  "scripts": {
+    "setup-dev": "yarn && yarn bootstrap && yarn link-all && yarn build",
+    "bootstrap": "lerna bootstrap",
+    "test": "lerna run clean && lerna run test --stream",
+    "coverage": "lerna run coverage",
+    "build": "lerna run build --stream",
+    "build:esm:watch": "lerna run build:esm:watch --parallel",
+    "build:cjs:watch": "lerna run build:cjs:watch --parallel",
+    "clean": "lerna run clean --parallel",
+    "format": "lerna run format",
+    "lint": "lerna run lint",
+    "link-all": "yarn unlink-all && lerna exec --no-bail --parallel yarn link",
+    "unlink-all": "lerna exec --no-bail --parallel -- yarn unlink; exit 0",
+    "publish:main": "lerna publish --canary --force-publish \"*\" --yes --dist-tag=unstable --preid=unstable --exact",
+    "publish:beta": "lerna publish --canary --force-publish \"*\" --yes --dist-tag=beta --preid=beta --exact",
+    "publish:release": "lerna publish --conventional-commits --yes --message 'chore(release): Publish [ci skip]'",
+    "publish:1.0-stable": "lerna publish --conventional-commits --yes --dist-tag=stable-1.0 --message 'chore(release): Publish [ci skip]'",
+    "publish:verdaccio": "lerna publish --no-push --canary minor --dist-tag=unstable --preid=unstable --exact --force-publish --yes"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@types/chai": "^4.2.11",
+    "@types/chai-as-promised": "^7.1.2",
+    "@types/dirty-chai": "^2.0.2",
+    "@types/faker": "^4.1.12",
+    "@types/lodash": "^4.14.152",
+    "@types/node": "^14.0.4",
+    "@types/sinon-chai": "^3.2.3",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "aws-sdk-mock": "^5.1.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-sonarjs": "^0.5.0",
+    "eslint-plugin-spellcheck": "0.0.16",
+    "faker": "^4.1.0",
+    "genversion": "^2.2.1",
+    "husky": "^4.2.5",
+    "lerna": "^3.22.1",
+    "nock": "^12.0.3",
+    "nyc": "^15.0.1",
+    "prettier": "^2.1.1",
+    "pretty-quick": "^3.0.0",
+    "sinon": "^9.0.3",
+    "sinon-chai": "^3.5.0",
+    "ts-loader": "^8.0.3",
+    "ts-mockito": "^2.6.1",
+    "ts-node": "^9.0.0",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tsdef": "0.0.13",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1"
+  },
+  "author": "Vizir Software Studio <contato@vizir.com.br>",
+  "contributors": [
+    "Wesley Burlani <wesleyburlani@gmail.com>"
+  ]
+}

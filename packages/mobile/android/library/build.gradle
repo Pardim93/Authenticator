@@ -1,0 +1,58 @@
+apply plugin: "com.android.library"
+
+
+android {
+  compileSdkVersion rootProject.ext.compileSdkVersion
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  defaultConfig {
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
+    versionCode 1
+    versionName "1.0"
+    archivesBaseName = "natura-auth-sdk"
+    version = android.defaultConfig.versionName
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  implementation fileTree(dir: "aar", include: ["*.aar"])
+  implementation fileTree(dir: "libs", include: ["*.jar"])
+  implementation "com.facebook.react:react-native:+"  // From node_modules
+
+  implementation 'androidx.appcompat:appcompat:1.0.2'
+  implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03'
+}
+
+apply from: file("$rootDir/tools/react/native_modules.gradle")
+applyNativeModulesAppBuildGradle(project)
+
+
+task cleanAssets(name: "Clean assets folder inside library", type: Delete) {
+  delete "./src/main/assets"
+  delete "./src/main/res"
+  mkdir("./src/main/assets")
+  mkdir("./src/main/res")
+  delete "../../artifacts/android"
+  mkdir("../../artifacts/android")
+}
+
+task renameFiles(name: "Rename natura-auth-sdk-release.aar to natura-auth-sdk.aar") {
+  def jsonFile = file('../../package.json')
+  def parsedPackageJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
+  def baseName = "natura-auth-sdk";
+  def version = parsedPackageJson.version;
+
+  file("$buildDir/outputs/aar/natura-auth-sdk-release.aar").renameTo(file("../../artifacts/android/$baseName-$version" + ".aar"));
+}

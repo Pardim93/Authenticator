@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.natura.auth.sdk">
+
+  <uses-permission android:name="android.permission.INTERNET" />
+  <application>
+    <activity
+      android:name="com.natura.auth.sdk.activities.NaturaAuthSDKActivity"
+      android:label="Library"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+      android:windowSoftInputMode="adjustNothing" />
+  </application>
+
+</manifest>

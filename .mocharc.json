@@ -1,0 +1,10 @@
+{
+  "diff": true,
+  "extension": "ts",
+  "exit": true,
+  "colors": true,
+  "timeout": 60000,
+  "full-trace": true,
+  "recursive": true,
+  "require": ["ts-node/register", "reflect-metadata"]
+}
