@@ -2,7 +2,7 @@
 
 A SDK to provide Natura's global contracts to execute authenticaton operations.
 
-## Contracts
+## Contracts 
 
 This SDK currently provides the easy-to-use contracts below:
 
